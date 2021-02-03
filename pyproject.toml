@@ -1,11 +1,15 @@
 [tool.poetry]
 name = "ai"
 version = "0.1.0"
-description = ""
+description = "Model for generating image captions"
 authors = ["Kyle1297 <kyle.griffin.1297@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "3.8x"
+tensorflow = "^2.4.1"
+matplotlib = "^3.3.4"
+sklearn = "^0.0"
+tqdm = "^4.56.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

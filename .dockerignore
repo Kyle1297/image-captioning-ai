@@ -1,0 +1,20 @@
+# tests
+/tests/
+
+# data
+/src/Flickr_Data/Flickr_Data/
+/src/Flickr_Data/train_captions.txt
+
+# training 
+/src/train.ipynb
+/src/train.py
+/src/inference.py
+
+# docker
+.dockerignore
+.gitignore
+docker-compose.yml
+Dockerfile
+
+# misc
+README.md

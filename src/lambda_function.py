@@ -53,5 +53,4 @@ def lambda_handler(event, context):
                                                       tokenizer, 
                                                       image_features_extract_model,
                                                       transformer)
-        print(' '.join(caption))
-        return caption
+        return ' '.join(caption)

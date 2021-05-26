@@ -1,8 +1,8 @@
-version: "3.8"
+version: '3.8'
 
 services:
   ai:
     container_name: ai
-    image: 669552689704.dkr.ecr.ap-southeast-2.amazonaws.com/image-captioning:ai
+    image: 396432430368.dkr.ecr.ap-southeast-2.amazonaws.com/captionai:ai
     build:
       context: .

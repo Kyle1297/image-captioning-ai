@@ -53,4 +53,11 @@ def lambda_handler(event, context):
                                                       tokenizer, 
                                                       image_features_extract_model,
                                                       transformer)
-        return ' '.join(caption)
+
+        # remove unknown words and split into sentence
+        print(f"Unmodified caption: {' '.join(caption)}")
+        caption = [word for word in caption if word != '<unk>']
+        caption = ' '.join(caption)
+        print(f"Modified caption: {caption}")
+        
+        return caption

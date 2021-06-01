@@ -40,24 +40,28 @@ def model_setup():
 
 
 def lambda_handler(event, context):
-    # extract model config
-    image_features_extract_model, tokenizer, transformer = model_setup()
+    try:
+        if event['Records']:
+            # extract model config
+            image_features_extract_model, tokenizer, transformer = model_setup()
 
-    # caption image
-    for record in event['Records']:
-        bucket = record['s3']['bucket']['name']
-        key = record['s3']['object']['key']
-        image_path = f"/tmp/{key.replace('/', '')}"
-        s3_client.download_file(bucket, key, image_path)
-        caption, result, attention_weights = evaluate(image_path, 
-                                                      tokenizer, 
-                                                      image_features_extract_model,
-                                                      transformer)
+            # caption image
+            for record in event['Records']:
+                bucket = record['s3']['bucket']['name']
+                key = record['s3']['object']['key']
+                image_path = f"/tmp/{key.replace('/', '')}"
+                s3_client.download_file(bucket, key, image_path)
+                caption, result, attention_weights = evaluate(image_path, 
+                                                            tokenizer, 
+                                                            image_features_extract_model,
+                                                            transformer)
 
-        # remove unknown words and split into sentence
-        print(f"Unmodified caption: {' '.join(caption)}")
-        caption = [word for word in caption if word != '<unk>']
-        caption = ' '.join(caption)
-        print(f"Modified caption: {caption}")
-        
-        return caption
+                # remove unknown words and split into sentence
+                print(f"Unmodified caption: {' '.join(caption)}")
+                caption = [word for word in caption if word != '<unk>']
+                caption = ' '.join(caption)
+                print(f"Modified caption: {caption}")
+                
+                return caption
+    except Exception:
+        pass

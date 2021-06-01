@@ -1,5 +1,5 @@
 # pull base image
-FROM public.ecr.aws/lambda/python:3.8
+FROM amazon/aws-lambda-python:3.8
 
 # enable easier debugging
 ENV PYTHONBUFFERED 1
